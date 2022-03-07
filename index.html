@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>/r/BadUiBattles - Recycle</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script defer src="script.js"></script>
+    </head>
+    <body>
+        <div id="contextMenu" class="context-menu" style="display: none"> 
+            <table class="menu">
+                <tbody>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem"><b>Open</b></td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem">Explore</td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon"><img src="icons/recycle.png" width="16px"></td>
+                        <td class="menuItem"><a onclick="if (recycleBinContents.length != 0) {document.getElementById('recycle').classList.add('window-open');}">Empty Recycle Bin</a></td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem">Create Shortcut</td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem">Delete</td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem">Rename</td>
+                    </tr>
+                    <tr>
+                        <td class="menuItemIcon">&nbsp;</td>
+                        <td class="menuItem">Properties</td>
+                    </tr>
+                    </tbody>
+                </table> 
+        </div> 
+        <div id="desktop">
+            <div class="desktopIcon" id="recycleIcon">
+                <img id="recycleIconImage" src="icons/recycle.png" width="40" draggable="false">
+                <p>Recycle Bin</p>
+            </div>
+            <div class="desktopIcon">
+                <img src="icons/ie.png" width="40" draggable="false">
+                <p>Idiot Explorer</p>
+            </div>
+            <div class="desktopIcon">
+                <img src="icons/pc.png" width="40" draggable="false">
+                <p>Computer Machine</p>
+            </div>
+        </div>
+        <div id="taskbar">
+            <button id="startButton" title="Click here to begin."></button>
+            <div id="time"></div>
+        </div>
+        <div id="recycle" class="window">
+            <div id="recycleTitle" class="titleBar">Delete Multiple Items</div>
+            <div class="windowContent">
+                <p class="dialogText" id="recycleWindowText"><img class="dialogIcon" src="ui/warning.png" draggable="false">Are you sure you want to permanently delete these items?</p>
+                <div class="dialogFooter">
+                    <button class="normal" onclick="document.getElementById('recycle').classList.remove('window-open');document.getElementById('recycleTask').classList.add('window-open');">Yes</button><button class="normal">No</button><button class="normal">Maybe So</button>
+                </div>
+            </div>
+        </div>
+        <div id="recycleTask" class="window">
+            <div id="recycleTaskTitle" class="titleBar">Delete Confirmation</div>
+            <div class="windowContent">
+                <div class="wrap">
+                    <p>To confirm deletion, enter the name of each file into the text input field.</p>
+                    <input spellcheck="false" id="inputDelete">
+                    <div><p id="progressText">&nbsp;</div>
+                    <div id="progressBarTrack">
+                        <div id="progressBar"></div>
+                    </div>
+                </div>
+                <div class="dialogFooter">
+                    <button class="normal">Cancel</button><button class="normal" onclick="removeFile(document.getElementById('inputDelete').value);">Permanently delete</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
