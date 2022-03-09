@@ -149,7 +149,6 @@ function rightClick(e) {
 // REMOVE FILE
 function removeFile(file) {
     if (recycleBinContents.includes(file)) {
-        console.log(file);
 
         let index = recycleBinContents.indexOf(file);
         if (index > -1) {
